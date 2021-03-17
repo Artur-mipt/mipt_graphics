@@ -111,7 +111,7 @@ int main( void )
 	glBufferData(GL_ARRAY_BUFFER, sizeof(g_color_buffer_data), g_color_buffer_data, GL_STATIC_DRAW);
     
     float x_cord = 5.0;
-    float y_cord = 5.0;
+    float y_cord = 1.4;
     float z_cord = 5.0;
     float grad = 0.0;
     int step_counter = 0;
@@ -125,20 +125,8 @@ int main( void )
         
         grad += 3.14 * 3 / 360;
         step_counter += 1;
-        int rotate_type = int(step_counter / 200) % 3;
-        if (rotate_type == 0) {
-            x_cord = 5;
-            y_cord = 5 * sin(grad);
-            z_cord = 5 * cos(grad);
-        } else if (rotate_type == 1) {
-            x_cord = 5 * cos(grad);
-            y_cord = 5;
-            z_cord = 5 * sin(grad);
-        } else if (rotate_type == 2) {
-            x_cord = 5 * sin(grad);
-            y_cord = 5 * cos(grad);
-            z_cord = 5;
-        }
+        x_cord = 5 * sin(grad);
+        z_cord = 5 * cos(grad);
         
         glm::mat4 MVP = Projection * View * Model;
 

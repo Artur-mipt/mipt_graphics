@@ -83,9 +83,9 @@ int main( void )
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
     
-    float z_cord = -5;
-    float y_cord = -5;
-    float x_cord = -5;
+    float z_cord = 5;
+    float y_cord = 1.5;
+    float x_cord = 5;
     int step_counter = 0;
     
 	do{
@@ -98,18 +98,14 @@ int main( void )
         );
         
         step_counter += 1;
-        if (step_counter < 50) {
-            z_cord += 0.1;
-        } else if (step_counter < 100) {
-            y_cord -= 0.1;
-        } else if (step_counter < 150) {
-            x_cord += 0.1;
-        } else if (step_counter < 200) {
+        if (step_counter < 100) {
             z_cord -= 0.1;
-        } else if (step_counter < 250) {
-            y_cord += 0.1;
-        } else if (step_counter < 300) {
+        } else if (step_counter < 200) {
             x_cord -= 0.1;
+        } else if (step_counter < 300) {
+            z_cord += 0.1;
+        } else if (step_counter < 400) {
+            x_cord += 0.1;
         } else {
             step_counter = 0;
         }
@@ -135,7 +131,7 @@ int main( void )
 		glfwSwapBuffers(window);
 		glfwPollEvents();
 
-	} while( glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0 );
+	} while (glfwGetKey(window, GLFW_KEY_ESCAPE ) != GLFW_PRESS && glfwWindowShouldClose(window) == 0);
 
 	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteProgram(programID);
